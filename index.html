@@ -3,15 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chá de Casa Nova - Henrique & Lorellay</title>
-    <!-- Fontes elegantes do Google -->
+    <title>Chá de Casa Nova - Henrique & Lorrellay</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-color: #8C6A4A; 
+            /* Paleta Azul Serenity */
+            --primary-color: #92A8D1; /* Azul Serenity clássico */
+            --primary-dark: #768FB9;  /* Azul ligeiramente mais escuro para os botões */
             --text-color: #333333;
-            --accent-color: #E8DCCB; 
+            --accent-color: #EBF0F5;  /* Fundo clarinho azulado para as caixas de texto */
+        }
+
+        /* Camada de Fundo Fixa - Garante que a imagem acompanhe a tela em qualquer celular */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('santo_antonio.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1; 
         }
 
         body {
@@ -23,36 +38,20 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            
-            /* Configuração da Imagem de Fundo */
-            background-image: url('santo_antonio.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-color: #f4f4f4; 
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.3);
-            z-index: 1;
         }
 
         .container {
             position: relative;
             z-index: 2;
-            background-color: rgba(255, 255, 255, 0.90);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            /* Cartão ligeiramente menos transparente para manter a leitura já que tiramos a tarja escura */
+            background-color: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             max-width: 420px;
             width: 90%;
-            margin: 30px 20px;
+            margin: 40px 20px;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             overflow: hidden;
             text-align: center;
             border-top: 8px solid var(--primary-color);
@@ -70,7 +69,7 @@
             color: #555;
             margin-bottom: 25px;
             padding-bottom: 20px;
-            border-bottom: 1px solid rgba(140, 106, 74, 0.3);
+            border-bottom: 1px solid rgba(146, 168, 209, 0.4);
         }
 
         .quote span {
@@ -84,7 +83,7 @@
         .header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 32px;
-            color: var(--primary-color);
+            color: var(--primary-dark);
             margin: 0 0 10px 0;
         }
 
@@ -100,7 +99,7 @@
             margin: 0 0 20px 0;
             font-size: 15px;
             font-weight: 700;
-            color: #4A3A2A;
+            color: #2C3E50;
         }
 
         .links-section {
@@ -110,14 +109,13 @@
             gap: 15px;
         }
 
-        /* Estilo das caixas de aviso (Pix e Bebidas) */
         .info-box {
-            background-color: rgba(232, 220, 203, 0.3);
-            border: 1px dashed var(--primary-color);
+            background-color: var(--accent-color);
+            border: 1px dashed var(--primary-dark);
             padding: 15px;
             border-radius: 10px;
             font-size: 13px;
-            color: #4A3A2A;
+            color: #2C3E50;
             text-align: left;
             line-height: 1.5;
         }
@@ -130,7 +128,6 @@
             margin: 0;
         }
 
-        /* Estilo do Copia e Cola do Pix */
         .pix-container {
             display: flex;
             gap: 8px;
@@ -149,7 +146,7 @@
         }
 
         .btn-copy {
-            background-color: var(--primary-color);
+            background-color: var(--primary-dark);
             color: white;
             border: none;
             padding: 0 15px;
@@ -185,13 +182,13 @@
             font-weight: 600;
             font-size: 15px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(140, 106, 74, 0.3);
+            box-shadow: 0 4px 10px rgba(146, 168, 209, 0.4);
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(140, 106, 74, 0.5);
-            background-color: #7A5B3E;
+            box-shadow: 0 6px 15px rgba(146, 168, 209, 0.6);
+            background-color: var(--primary-dark);
         }
 
         .btn-whatsapp {
@@ -211,8 +208,6 @@
 </head>
 <body>
 
-    <div class="overlay"></div>
-
     <div class="container">
         <div class="header">
             <div class="quote">
@@ -230,17 +225,14 @@
         </div>
 
         <div class="links-section">
-            <!-- Link do Google Maps -->
             <a href="https://www.google.com/maps/search/?api=1&query=-29.8733626,-50.9264403" target="_blank" class="btn">
                 <span class="emoji">📍</span> Endereço e Rota
             </a>
 
-            <!-- Link do Site de Presentes -->
             <a href="https://cha-de-casa-nova-1wrs.listaideal.com.br/pt" target="_blank" class="btn">
                 <span class="emoji">🎁</span> Lista de Presentes
             </a>
 
-            <!-- Caixa de Informação PIX -->
             <div class="info-box">
                 <p><strong>Quer nos presentear com um Pix?</strong></p>
                 <p>Para aqueles que preferirem não escolher presentes da lista física, preparamos nossa chave Pix. É só copiar abaixo!</p>
@@ -250,12 +242,10 @@
                 </div>
             </div>
 
-            <!-- Caixa de Informação Bebidas -->
             <div class="info-box">
                 <p>🍻 <strong>Sobre as bebidas:</strong> Nós garantimos a comida, os petiscos e os não-alcoólicos! As bebidas alcoólicas ficam por conta de cada convidado, então sinta-se à vontade para trazer o seu cooler com o que for beber.</p>
             </div>
 
-            <!-- Link da API do WhatsApp com Data Limite -->
             <div class="rsvp-note">Por favor, confirme sua presença até o dia 30/05/2026 👇</div>
             <a href="https://wa.me/5551996147342?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20ch%C3%A1%20de%20casa%20nova%20do%20Henrique%20e%20da%20Lorrellay!" target="_blank" class="btn btn-whatsapp">
                 <span class="emoji">✅</span> Confirmar Presença
@@ -263,27 +253,20 @@
         </div>
     </div>
 
-    <!-- Script para a função Copia e Cola do Pix -->
     <script>
         function copyPix() {
             var copyText = document.getElementById("pixKey");
-            
-            // Seleciona o texto do campo
             copyText.select();
-            copyText.setSelectionRange(0, 99999); // Para funcionar bem em dispositivos móveis
-            
-            // Copia para a área de transferência do celular/PC
+            copyText.setSelectionRange(0, 99999);
             document.execCommand("copy");
             
-            // Muda o visual do botão para dar feedback ao convidado
             var btn = document.getElementById("btnCopy");
             btn.innerHTML = "Copiado! ✓";
-            btn.style.backgroundColor = "#20BA56"; // Fica verde
+            btn.style.backgroundColor = "#20BA56"; 
             
-            // Volta ao normal depois de 3 segundos
             setTimeout(function() {
                 btn.innerHTML = "Copiar";
-                btn.style.backgroundColor = "var(--primary-color)";
+                btn.style.backgroundColor = "var(--primary-dark)";
             }, 3000);
         }
     </script>
