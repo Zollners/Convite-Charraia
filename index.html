@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chá de Casa Nova - Henrique & Noiva</title>
+    <title>Chá de Casa Nova - Henrique & Lorrellay</title>
     <!-- Fontes elegantes do Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-color: #8C6A4A; /* Tom terroso/madeira, elegante e clássico */
+            --primary-color: #8C6A4A; 
             --text-color: #333333;
             --accent-color: #E8DCCB; 
         }
@@ -29,10 +29,9 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-color: #f4f4f4; /* Cor reserva caso a imagem demore a carregar */
+            background-color: #f4f4f4; 
         }
 
-        /* Máscara escura sobre a imagem de fundo para dar contraste */
         .overlay {
             position: absolute;
             top: 0;
@@ -46,8 +45,7 @@
         .container {
             position: relative;
             z-index: 2;
-            /* Efeito "Vidro" (Glassmorphism) para ver o fundo de forma desfocada */
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: rgba(255, 255, 255, 0.90);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             max-width: 420px;
@@ -101,7 +99,7 @@
             padding: 20px;
             margin: 0 0 20px 0;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 700;
             color: #4A3A2A;
         }
 
@@ -110,6 +108,68 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+        }
+
+        /* Estilo das caixas de aviso (Pix e Bebidas) */
+        .info-box {
+            background-color: rgba(232, 220, 203, 0.3);
+            border: 1px dashed var(--primary-color);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 13px;
+            color: #4A3A2A;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        .info-box p {
+            margin: 0 0 8px 0;
+        }
+
+        .info-box p:last-child {
+            margin: 0;
+        }
+
+        /* Estilo do Copia e Cola do Pix */
+        .pix-container {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .pix-container input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            background-color: #FFF;
+            color: #333;
+        }
+
+        .btn-copy {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-copy:active {
+            transform: scale(0.95);
+        }
+
+        .rsvp-note {
+            font-size: 13px;
+            color: #d32f2f;
+            margin-top: 10px;
+            margin-bottom: -5px;
+            font-weight: 700;
         }
 
         .btn {
@@ -160,13 +220,13 @@
                 <span>São João Paulo II</span>
             </div>
             
-            <h1>Henrique & Lorellay</h1>
+            <h1>Henrique & Lorrellay</h1>
             <p>Com a graça de Deus, estamos construindo o nosso lar. Venha celebrar conosco o nosso Chá de Casa Nova!</p>
         </div>
 
         <div class="details">
             📅 Sábado, 13 de Junho de 2026<br>
-            ⏰ Às 16:00
+            ⏰ Às 16h00
         </div>
 
         <div class="links-section">
@@ -180,12 +240,52 @@
                 <span class="emoji">🎁</span> Lista de Presentes
             </a>
 
-            <!-- Link da API do WhatsApp -->
-            <a href="https://wa.me/5551996147342?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20ch%C3%A1%20de%20casa%20nova%20do%20Henrique!" target="_blank" class="btn btn-whatsapp">
+            <!-- Caixa de Informação PIX -->
+            <div class="info-box">
+                <p><strong>Quer nos presentear com um Pix?</strong></p>
+                <p>Para aqueles que preferirem não escolher presentes da lista física, preparamos nossa chave Pix. É só copiar abaixo!</p>
+                <div class="pix-container">
+                    <input type="text" value="lorellaycervadesouza@gmail.com" id="pixKey" readonly>
+                    <button onclick="copyPix()" id="btnCopy" class="btn-copy">Copiar</button>
+                </div>
+            </div>
+
+            <!-- Caixa de Informação Bebidas -->
+            <div class="info-box">
+                <p>🍻 <strong>Sobre as bebidas:</strong> Nós garantimos a comida, os petiscos e os não-alcoólicos! As bebidas alcoólicas ficam por conta de cada convidado, então sinta-se à vontade para trazer o seu cooler com o que for beber.</p>
+            </div>
+
+            <!-- Link da API do WhatsApp com Data Limite -->
+            <div class="rsvp-note">Por favor, confirme sua presença até o dia 30/05/2026 👇</div>
+            <a href="https://wa.me/5551996147342?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20ch%C3%A1%20de%20casa%20nova%20do%20Henrique%20e%20da%20Lorrellay!" target="_blank" class="btn btn-whatsapp">
                 <span class="emoji">✅</span> Confirmar Presença
             </a>
         </div>
     </div>
 
+    <!-- Script para a função Copia e Cola do Pix -->
+    <script>
+        function copyPix() {
+            var copyText = document.getElementById("pixKey");
+            
+            // Seleciona o texto do campo
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // Para funcionar bem em dispositivos móveis
+            
+            // Copia para a área de transferência do celular/PC
+            document.execCommand("copy");
+            
+            // Muda o visual do botão para dar feedback ao convidado
+            var btn = document.getElementById("btnCopy");
+            btn.innerHTML = "Copiado! ✓";
+            btn.style.backgroundColor = "#20BA56"; // Fica verde
+            
+            // Volta ao normal depois de 3 segundos
+            setTimeout(function() {
+                btn.innerHTML = "Copiar";
+                btn.style.backgroundColor = "var(--primary-color)";
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
